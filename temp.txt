@@ -1,0 +1,10 @@
+route controller:
+const getAutoSuggestUsers = (req, res) => {
+    const loginSubstring = req.params.loginSubstring;
+    const limit = req.params.limit;
+
+    const Sortedusers = users.sort((a, b) => a.login.localeCompare(b.login));
+    const suggestedUsers = (Sortedusers.filter(user => user.login.indexof(loginSubstring) != -1)).slice(0, limit);
+    res.statusCode = 200;
+    res.send({ message: "The Suggested Users", Users: suggestedUsers });
+};
